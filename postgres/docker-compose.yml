@@ -1,19 +1,12 @@
 version: '3'
 
-networks:
-  default:
-    external:
-      name: ${DOCKER_NETWORK:-default}
-
 services:
   postgres:
     image: postgres
     container_name: postgres
     restart: always
-    networks:
-      default:
-        aliases:
-          - ${VIRTUAL_HOST:-postgres}
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST:-postgres}
     ports:
       - ${HOST_PORT:-5432}:5432
     volumes:
