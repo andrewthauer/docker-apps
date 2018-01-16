@@ -1,0 +1,15 @@
+version: '3'
+
+volumes:
+  portainer_data:
+
+services:
+  app:
+    image: portainer/portainer
+    container_name: portainer
+    restart: always
+    ports:
+      - ${HOST_PORT:-9000}:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
