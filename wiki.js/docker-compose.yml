@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  db:
+    image: mongo
+    command: --smallfiles --logpath=/dev/null
+    expose:
+      - ${DATABASE_PORT}
+    volumes:
+      - ${DATA_DIR-./data}/mongo:/data/db
+
+  app:
+    image: requarks/wiki
+    env_file: .env
+    ports:
+      - 3000
+    links:
+      - db
+    volumes:
+      - ${WIKI_CONFIG_PATH:-./config.yml}:/var/wiki/config.yml
+      - ${REPO_DIR:-./repo}:/var/wiki/repo
+      - ${SSH_KEY_PATH:-./ssh/id_wiki}:/etc/wiki/keys/id_wiki
+
+  web:
+    image: nginx:latest
+    ports:
+      - ${HOST_PORT}:80
+    links:
+      - app
+    volumes:
+      - ${NGINX_CONF_PATH:-./nginx.conf:/etc/nginx/conf.d/default.conf}

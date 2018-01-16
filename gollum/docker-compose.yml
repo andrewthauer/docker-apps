@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - ${PORT:-4567}:80
+    volumes:
+      - ${WIKI_DIR:-./wiki}:/wiki

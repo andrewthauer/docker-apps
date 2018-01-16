@@ -1,0 +1,18 @@
+version: '3'
+
+networks:
+  default:
+    external:
+      name: ${DOCKER_NETWORK:-default}
+
+services:
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    networks:
+      default:
+        aliases:
+          - ${VIRTUAL_HOST:-redis}
+    ports:
+      - ${HOST_PORT:-6379}:6379
