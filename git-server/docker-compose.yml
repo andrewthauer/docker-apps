@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  server:
+    image: jkarlos/git-server-docker
+    container_name: git-server
+    restart: always
+    ports:
+      - ${HOST_PORT:-2222}:22
+    volumes:
+      - ${KEYS_DIR:-./keys}:/git-server/keys
+      - ${REPOS_DIR:-./repos}:/git-server/repos
