@@ -6,4 +6,4 @@ services:
     ports:
       - ${PORT:-4567}:80
     volumes:
-      - ${WIKI_DIR:-./wiki}:/wiki
+      - ${WIKI_PATH:-./wiki}:/wiki

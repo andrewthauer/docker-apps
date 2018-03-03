@@ -18,7 +18,7 @@ services:
       - db
     volumes:
       - ${WIKI_CONFIG_PATH:-./config.yml}:/var/wiki/config.yml
-      - ${REPO_DIR:-./repo}:/var/wiki/repo
+      - ${REPO_PATH:-./repo}:/var/wiki/repo
       - ${SSH_KEY_PATH:-./ssh/id_wiki}:/etc/wiki/keys/id_wiki
 
   web:

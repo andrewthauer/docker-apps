@@ -13,4 +13,4 @@ services:
     ports:
       - ${HOST_PORT:-3306}:3306
     volumes:
-      - ${DATA_DIR:-./data}:/var/lib/mysql
+      - ${DATA_PATH:-./data}:/var/lib/mysql

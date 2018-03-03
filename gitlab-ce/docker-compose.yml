@@ -13,6 +13,6 @@ services:
       - ${HOST_PORT:-9090}:9090
       - ${HOST_SSH_PORT:-2224}:22
     volumes:
-      - ${DATA_DIR:-./data}/gitlab/config:/etc/gitlab
-      - ${DATA_DIR:-./data}/gitlab/logs:/var/log/gitlab
-      - ${DATA_DIR:-./data}/gitlab/data:/var/opt/gitlab
+      - ${DATA_PATH:-./data}/gitlab/config:/etc/gitlab
+      - ${DATA_PATH:-./data}/gitlab/logs:/var/log/gitlab
+      - ${DATA_PATH:-./data}/gitlab/data:/var/opt/gitlab

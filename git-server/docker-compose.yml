@@ -8,5 +8,5 @@ services:
     ports:
       - ${HOST_PORT:-2222}:22
     volumes:
-      - ${KEYS_DIR:-./keys}:/git-server/keys
-      - ${REPOS_DIR:-./repos}:/git-server/repos
+      - ${KEYS_PATH:-./keys}:/git-server/keys
+      - ${REPOS_PATH:-./repos}:/git-server/repos
