@@ -1,0 +1,15 @@
+# Atlassian Docker
+# https://hub.docker.com/r/cptactionhank/atlassian-bamboo/
+
+version: '3'
+
+services:
+  server:
+    image: cptactionhank/atlassian-bamboo:latest
+    container_name: bamboo
+    restart: always
+    ports:
+      - ${HOST_PORT:-8085}:8085
+    volumes:
+      - ${DATA_PATH:-./data/home}:/var/atlassian/bamboo}
+      - ${DATA_PATH:-./data/conf}:/opt/atlassian/bamboo/conf}
