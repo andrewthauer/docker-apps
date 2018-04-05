@@ -4,7 +4,6 @@ services:
   server:
     image: jkarlos/git-server-docker
     container_name: git-server
-    restart: always
     ports:
       - ${HOST_PORT:-2222}:22
     volumes:

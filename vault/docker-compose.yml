@@ -1,0 +1,19 @@
+# Hashicorp Vault Docker
+# https://hub.docker.com/_/vault/
+
+version: '3'
+
+services:
+  server:
+    image: vault
+    container_name: vault
+    environment:
+      VAULT_LOCAL_CONFIG: '{"backend": {"file": {"path": "/vault/file"}}, "default_lease_ttl": "168h", "max_lease_ttl": "720h"}'
+    command: server
+    cap_add:
+      - IPC_LOCK
+    ports:
+      - ${HOST_PORT:-8200}:8200
+    volumes:
+      - ${FILE_PATH:-./data/vault/file}:/vault/file
+      - ${LOGS_PATH:-./data/vault/logs}:/vault/logs

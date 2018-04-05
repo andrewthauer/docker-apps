@@ -4,7 +4,6 @@ services:
   redis:
     image: redis
     container_name: redis
-    restart: always
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST:-redis}
     ports:
