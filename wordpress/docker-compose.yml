@@ -1,0 +1,44 @@
+# Wordpress Docker
+# https://hub.docker.com/_/wordpress/
+
+version: '3'
+
+services:
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-somewordpress}
+      MYSQL_DATABASE: ${WORDPRESS_DB_NAME:-wordpress}
+      MYSQL_USER: ${WORDPRESS_DB_USER:-wordpress}
+      MYSQL_PASSWORD: ${WORDPRESS_DB_PASSWORD:-wordpress}
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  app:
+    image: wordpress
+    environment:
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST:-db:3306}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD:-wordpress}
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+    volumes:
+      - ${DATA_PATH:-./data/html}:/var/www/html
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-somewordpress}
+      PMA_HOST: ${WORDPRESS_DB_HOST:-db:3306}
+      PMA_USER: ${WORDPRESS_DB_USER:-wordpress}
+      PMA_PASSWORD: ${WORDPRESS_DB_PASSWORD:-wordpress}
+    depends_on:
+      - db
+    ports:
+      - 8181:80
+
+volumes:
+  dbdata:
