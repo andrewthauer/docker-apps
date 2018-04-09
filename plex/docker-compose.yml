@@ -1,0 +1,33 @@
+# Plex Docker
+# https://hub.docker.com/r/linuxserver/plex/
+# https://github.com/linuxserver/docker-plex
+
+version: '3'
+
+services:
+  app:
+    image: linuxserver/plex
+    container_name: plex
+    # restart: always
+    environment:
+      VERSION: ${VERSION:-latest}
+      PGID: ${PGID}
+      PUID: ${PUID}
+      TZ: ${TZ:-America/Toronto}
+    network_mode: host
+    # TO RUN
+    # networks:
+    #   - default
+    # ports:
+    #   - 32400:32400
+    #   - 32400:32400/udp
+    #   - 32469:32469
+    #   - 32469:32469/udp
+    #   - 5353:5353/udp
+    #   - 1900:1900/udp
+    volumes:
+      - ${CONFIG_PATH:-./config}:/config
+      - ${TRANSCODE_PATH:-./temp/transcode}:/transcode
+      - ${MUSIC_PATH:-./media/music}:/data/music
+      - ${TV_PATH:-./media/tv}:/data/tvshows
+      - ${MOVIES_PATH:-./media/movies}:/data/movies
