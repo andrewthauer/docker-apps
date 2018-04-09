@@ -1,0 +1,25 @@
+# Syncthing Docker
+# https://hub.docker.com/r/linuxserver/syncthing/
+# https://github.com/linuxserver/docker-syncthing/commits/master
+
+version: '3'
+
+services:
+  app:
+    image: linuxserver/syncthing
+    container_name: syncthing
+    # restart: always
+    environment:
+      PGID: ${PGID}
+      PUID: ${PUID}
+      # UMASK_SET: ${UMASK_SET:-022}
+    networks:
+      - default
+    ports:
+      - ${WEBUI_PORT-:8384}:8384
+      - ${LISTENING_PORT:-22000}:22000
+      - ${DISCOVERY_PORT:-21027}:21027/udp
+    volumes:
+      - ${CONFIG_PATH:-./config}:/config
+      - ${DEFAULT_SYNC_PATH:-./sync}:/config/Sync
+      # - /path/to/other/sync:/mnt/data/to/other/sync
