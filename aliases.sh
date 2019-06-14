@@ -1,21 +1,12 @@
 #
-# Docker related aliases
-#
-
-# Skip if docker is not installed
-if ! [[ -x "$(command -v docker)" ]]; then
-  return
-fi
-
-#
-# docker
+# Docker
 #
 
 alias dk='docker'
 
 # Images
 alias di='docker images'
-alias dbu='docker build'
+alias dbld='docker build'
 alias drmi='docker rmi'
 alias drmi_all='docker rmi $* $(docker images -a -q)'
 alias drmi_dang='docker rmi $* $(docker images -q -f dangling=true)'
@@ -31,7 +22,7 @@ alias dstop_all='docker stop $* $(docker ps -q -f status=running)'
 alias drestart='docker restart $*'
 alias dattach='docker attach $*'
 alias dexec='docker exec'
-alias drun='docker run $*'
+alias drun='docker run --rm $*'
 alias drunit='docker run --rm -it $*'
 alias dinspect='docker inspect $*'
 alias dlog='docker logs'
@@ -48,11 +39,7 @@ alias dvrm='docker volume rm $*'
 alias dvrm_all='docker volume rm $(docker volume ls -q)'
 alias dvrm_dang='docker volume rm $(docker volume ls -q -f dangling=true)'
 
-#
 # docker-compose
-#
-
-# Commands
 alias dco='docker-compose'
 alias dcb='docker-compose build'
 alias dce='docker-compose exec'
