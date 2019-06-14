@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  dnsmasq:
+    image: andyshinn/dnsmasq
+    container_name: dnsmasq
+    command: --address=/${DOCKER_DOMAIN_TLD:-dev}/127.0.0.1
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 53535:53/tcp
+      - 53535:53/udp
+    restart: always
+
+  http-proxy:
+    image: codekitchen/dinghy-http-proxy
+    container_name: http-proxy
+    restart: always
+    env_file:
+      - .env
+    environment:
+      DNS_IP: 127.0.0.1
+      DOMAIN_TLD: ${DOCKER_DOMAIN_TLD:-dev}
+      CONTAINER_NAME: http-proxy
+    ports:
+      - 80:80
+      - 443:443
+      - 19322:19322/udp
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      # - ~/.dinghy/certs:/etc/nginx/certs`
+
+networks:
+  default:
+    external:
+      name: ${DOCKER_NETWORK:-default}
