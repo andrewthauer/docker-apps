@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  artifactory:
+    image: docker.bintray.io/jfrog/artifactory-oss:latest
+    container_name: artifactory
+    # environment:
+    #   #  Add extra Java options by uncommenting the following lines
+    #   - EXTRA_JAVA_OPTIONS=-Xmx4g
+    ports:
+      - ${HOST_PORT:-8081}:8081
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000
+    # restart: always
+    volumes:
+      - ${DATA_PATH:-./data/artifactory}:/var/opt/jfrog/artifactory

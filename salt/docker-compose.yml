@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  artifactory:
+    image: saltstack/sal:latest
+    container_name: salt
+    environment:
+      # SALT_MASTER_CONFIG:
+      SALT_SHARED_SECRET: mysecretpassword
+    ports:
+      - ${HOST_PORT:-8000}:8080
+      - ${HOST_PORT2:-50000}:50000
+    # restart: always
+    volumes:
+      - ${DATA_PATH:-./data/jenkins_home}:/var/jenkins_home
