@@ -1,0 +1,19 @@
+# RabbitMQ Docker
+# https://hub.docker.com/_/rabbitmq/
+
+version: '3'
+
+services:
+  rabbitmq:
+    # image: rabbitmq
+    image: rabbitmq:management
+    container_name: rabbitmq
+    # restart: always
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST:-rabbitmq}
+    hostname: rabbitmq
+    ports:
+      - ${HOST_PORT:-5672}:5672
+      - ${HOST_MGMT_PORT:-15672}:15672
+    volumes:
+      - ${DATA_PATH:-./data}:/var/lib/rabbitmq

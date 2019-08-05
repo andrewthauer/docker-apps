@@ -7,6 +7,8 @@ alias dk='docker'
 # Images
 alias di='docker images'
 alias dbld='docker build'
+alias dhist='docker history'
+alias dpull="docker pull"
 alias drmi='docker rmi'
 alias drmi_all='docker rmi $* $(docker images -a -q)'
 alias drmi_dang='docker rmi $* $(docker images -q -f dangling=true)'
@@ -28,10 +30,8 @@ alias dinspect='docker inspect $*'
 alias dlog='docker logs'
 alias dip='docker inspect --format="{{.NetworkSettings.IPAddress}}" $*'
 alias drm='docker rm'
-alias drm_stopped='docker rm $* $(docker ps -q -f status=exited)'
-alias drm_all='docker rm $* $(docker ps -a -q)'
-alias drmv_stopped='docker rm -v $* $(docker ps -q -f status=exited)'
-alias drmv_all='docker rm -v $* $(docker ps -a -q)'
+alias drm_stopped='docker rm -v $* $(docker ps -q -f status=exited)'
+alias drm_all='docker rm -v $* $(docker ps -a -q)'
 
 # Volumes
 alias dvls='docker volume ls $*'

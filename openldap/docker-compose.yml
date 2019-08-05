@@ -14,7 +14,6 @@ services:
       LDAP_DOMAIN: ${LDAP_DOMAIN:-home.local}
       LDAP_BASE_DN: ""
       LDAP_ADMIN_PASSWORD: ${LDAP_ADMIN_PASSWORD:-admin}
-      LDAP_ADMIN_PASSWORD: admin
       LDAP_CONFIG_PASSWORD: config
       LDAP_READONLY_USER: "false"
       LDAP_READONLY_USER_USERNAME: readonly
@@ -40,17 +39,14 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      - /var/lib/ldap
-      - /etc/ldap/slapd.d
+      - ${DATABASE_PATH:-./database}:/var/lib/ldap
+      - ${CONFIG_PATH:-./config}:/etc/ldap/slapd.d
       - /container/service/slapd/assets/certs/
     ports:
       - 389:389
       - 636:636
     domainname: ${LDAP_DOMAIN} # important: same as hostname
     hostname:  ${LDAP_DOMAIN}
-    volumes:
-      - ${CONFIG_PATH:-./config}:/etc/ldap/slapd.d
-      - ${DATABASE_PATH:-./database}:/var/lib/ldap
 
   phpldapadmin:
     image: osixia/phpldapadmin:latest

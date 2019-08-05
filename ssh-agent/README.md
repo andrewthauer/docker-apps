@@ -1,5 +1,4 @@
-Docker SSH Agent
-================
+# Docker SSH Agent
 
 Share an ssh-agent to other containers. Based on [ssh-agent](https://github.com/whilp/ssh-agent).
 

@@ -1,10 +1,8 @@
-HTTP Proxy
-==========
+# HTTP Proxy
 
 Support for local TLD's (e.g. `.dev`).
 
-Setup
------
+## Setup
 
 ```sh
 # create .dev resolver
@@ -14,8 +12,7 @@ sudo mkdir -p /etc/resolver && echo "nameserver 127.0.0.1\nport 53535" > /etc/re
 docker-compose up -d
 ```
 
-Running Apps Locally
---------------------
+## Running Apps Locally
 
 ```shell
 # Use the local version
