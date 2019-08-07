@@ -8,7 +8,6 @@ services:
     # image: rabbitmq
     image: rabbitmq:management
     container_name: rabbitmq
-    # restart: always
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST:-rabbitmq}
     hostname: rabbitmq

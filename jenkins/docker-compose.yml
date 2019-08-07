@@ -7,6 +7,5 @@ services:
     ports:
       - ${HOST_PORT:-8080}:8080
       - ${HOST_PORT2:-50000}:50000
-    # restart: always
     volumes:
       - ${DATA_PATH:-./data/jenkins_home}:/var/jenkins_home

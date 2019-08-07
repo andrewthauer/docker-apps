@@ -4,7 +4,7 @@ services:
   postgres:
     image: postgres
     container_name: postgres
-    # restart: always
+    restart: ${DOCKER_RESTART:-no}
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST:-postgres}
     ports:

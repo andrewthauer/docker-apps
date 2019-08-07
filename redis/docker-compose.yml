@@ -4,6 +4,7 @@ services:
   redis:
     image: redis:latest
     container_name: redis
+    restart: ${DOCKER_RESTART:-no}
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST:-redis}
     ports:

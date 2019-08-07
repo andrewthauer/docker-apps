@@ -4,9 +4,7 @@ services:
   artifactory:
     image: atlassian/bitbucket-server:latest
     container_name: bitbucket
-    # environment:
     ports:
       - ${HOST_PORT:-7990}:7990
-    # restart: always
     volumes:
       - ${DATA_PATH:-./data/bitbucket}:/var/atlassian/application-data/bitbucket

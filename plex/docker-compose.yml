@@ -8,7 +8,6 @@ services:
   app:
     image: linuxserver/plex
     container_name: plex
-    # restart: always
     environment:
       VERSION: ${VERSION:-latest}
       PGID: ${PGID}

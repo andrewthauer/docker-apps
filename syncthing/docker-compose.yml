@@ -8,7 +8,6 @@ services:
   app:
     image: linuxserver/syncthing
     container_name: syncthing
-    # restart: always
     environment:
       PGID: ${PGID}
       PUID: ${PUID}
