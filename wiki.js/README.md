@@ -2,6 +2,8 @@
 
 [Wiki.js](https://wiki.js.org/) as a docker container.
 
+- https://www.vaultproject.io/
+
 ## Running
 
 ```sh

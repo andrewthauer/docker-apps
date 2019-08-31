@@ -2,6 +2,9 @@
 
 Support for local TLD's (e.g. `.dev`).
 
+- https://hub.docker.com/r/andyshinn/dnsmasq
+- https://hub.docker.com/r/codekitchen/dinghy-http-proxy
+
 ## Setup
 
 ```sh

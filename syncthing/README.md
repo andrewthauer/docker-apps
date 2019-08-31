@@ -1,3 +1,7 @@
-# Syncthing Server - Docker
+# Syncthing Server
 
-Based on [`linuxserver/syncthing`](https://hub.docker.com/r/linuxserver/syncthing/)
+See [linuxserver/syncthing](https://hub.docker.com/r/linuxserver/syncthing/)
+
+- https://syncthing.net/
+- https://hub.docker.com/r/linuxserver/syncthing/
+- https://github.com/linuxserver/docker-syncthing/commits/master

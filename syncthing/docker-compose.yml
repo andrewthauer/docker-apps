@@ -1,7 +1,3 @@
-# Syncthing Docker
-# https://hub.docker.com/r/linuxserver/syncthing/
-# https://github.com/linuxserver/docker-syncthing/commits/master
-
 version: '3'
 
 services:

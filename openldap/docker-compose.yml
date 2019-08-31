@@ -1,6 +1,3 @@
-# OpenLDAP Docker
-# https://github.com/osixia/docker-openldap
-
 version: '3'
 
 services:

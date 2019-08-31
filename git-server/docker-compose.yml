@@ -1,6 +1,3 @@
-# Git Server Docker
-# https://hub.docker.com/r/jkarlos/git-server-docker/
-
 version: '3'
 
 services:

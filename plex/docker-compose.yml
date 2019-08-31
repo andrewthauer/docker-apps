@@ -1,7 +1,3 @@
-# Plex Docker
-# https://hub.docker.com/r/linuxserver/plex/
-# https://github.com/linuxserver/docker-plex
-
 version: '3'
 
 services:

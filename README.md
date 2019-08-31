@@ -1,3 +1,3 @@
 # Docker Apps
 
-Various docker-compose files for development.
+Various docker apps files for local development.

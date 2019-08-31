@@ -1,3 +1,6 @@
-# Wordpress - Docker
+# Wordpress
 
-Based on [`library/wordpress`](https://hub.docker.com/_/wordpress/)
+See [WordPress Docker](https://hub.docker.com/_/wordpress/)
+
+- https://wordpress.com/
+- https://hub.docker.com/_/wordpress/

@@ -1,6 +1,9 @@
-# Git Server - Docker
+# Git Server
 
-Based on [`jkarlos/git-server-docker`](https://hub.docker.com/r/jkarlos/git-server-docker/)
+See [jkarlos/git-server-docker](https://hub.docker.com/r/jkarlos/git-server-docker/)
+
+- https://git-scm.com/book/en/v2/Git-on-the-Server-Setting-Up-the-Server
+- https://hub.docker.com/r/jkarlos/git-server-docker/
 
 ## FAQ
 

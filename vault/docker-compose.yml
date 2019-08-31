@@ -1,6 +1,3 @@
-# Hashicorp Vault Docker
-# https://hub.docker.com/_/vault/
-
 version: '3'
 
 services:
