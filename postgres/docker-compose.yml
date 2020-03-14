@@ -1,13 +1,20 @@
 version: '3'
 
+volumes:
+  # docker volume create --name postgres_data
+  postgres_data:
+    external: true
+
 services:
   postgres:
     image: postgres
     container_name: postgres
-    restart: ${DOCKER_RESTART:-no}
+    restart: ${DOCKER_RESTART:-unless-stopped}
     environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-}
       VIRTUAL_HOST: ${VIRTUAL_HOST:-postgres}
     ports:
       - ${HOST_PORT:-5432}:5432
     volumes:
-      - ${DATA_PATH:-./data}:/var/lib/postgresql/data/pgdata
+      - postgres_data:/var/lib/postgresql/data
+      # - ${DATA_PATH:-./data}:/var/lib/postgresql/data/pgdata
