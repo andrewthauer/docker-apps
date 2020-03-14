@@ -1,0 +1,22 @@
+FROM centos
+
+RUN set -x \
+  # Install pre-requisites
+  && yum install -y --nogpgcheck wget unixODBC libaio libnsl \
+  # Install oracle instant client
+  && cd /etc/yum.repos.d \
+  && wget http://yum.oracle.com/public-yum-ol7.repo \
+  && wget http://yum.oracle.com/RPM-GPG-KEY-oracle-ol7 \
+  && rpm --import RPM-GPG-KEY-oracle-ol7 \
+  && yum install -y yum-utils \
+  && yum-config-manager --enable ol7_oracle_instantclient \
+  && yum install -y oracle-instantclient19.3-basic \
+  && yum install -y oracle-instantclient19.3-devel \
+  && yum install -y oracle-instantclient19.3-jdbc \
+  && yum install -y oracle-instantclient19.3-odbc \
+  && yum install -y oracle-instantclient19.3-sqlplus \
+  && yum install -y oracle-instantclient19.3-tools \
+  # Cleanup
+  && yum clean all
+
+# env export LD_LIBRARY_PATH=/usr/lib/oracle/19.3/client64/lib:$LD_LIBRARY_PATH
