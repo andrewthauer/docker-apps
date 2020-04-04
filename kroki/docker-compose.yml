@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+ core:
+   image: yuzutech/kroki
+   environment:
+     - KROKI_BLOCKDIAG_HOST=blockdiag
+     - KROKI_MERMAID_HOST=mermaid
+   ports:
+     - 8000:8000
+
+ blockdiag:
+   image: yuzutech/kroki-blockdiag
+   ports:
+     - 8001:8001
+
+ mermaid:
+   image: yuzutech/kroki-mermaid
+   ports:
+     - 8002:8002
