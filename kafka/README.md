@@ -1,3 +1,3 @@
 # Kafka
 
-See [Kafka](https://hub.docker.com/u/confluentinc/)
+See [Kafka (Confluent)](https://hub.docker.com/u/confluentinc/)
