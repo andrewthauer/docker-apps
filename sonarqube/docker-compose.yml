@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  sonarqube:
+    image: sonarqube:8.4-community
+    container_name: sonarqube
+    # environment:
+    ports:
+      - ${HOST_PORT:-9000}:9000
+    volumes:
+      - ${DATA_PATH:-./data}/data:/opt/sonarqube/data:rw
+      - ${DATA_PATH:-./data}/extensions:/opt/sonarqube/extensions:rw
+      - ${DATA_PATH:-./data}/logs:/opt/sonarqube/logs:rw
+
+  # sonar-scanner:
+  #   image: sonarsource/sonar-scanner-cli:4.5
+  #   container_name: sonar-scanner
+  #   # restart: unless-stopped
+  #   # depends_on:
+  #   #   - sonarqube
+  #   volumes:
+  #     - ./test:/usr/src/test-data
