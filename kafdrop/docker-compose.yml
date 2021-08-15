@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  kafdrop:
+    image: obsidiandynamics/kafdrop:latest
+    container_name: kafdrop
+    environment:
+      KAFKA_BROKERCONNECT: "$KAFKA_BROKERCONNECT"
+      KAFKA_PROPERTIES: "$KAFKA_PROPERTIES"
+      SCHEMAREGISTRY_CONNECT: "$SCHEMAREGISTRY_CONNECT"
+      SCHEMAREGISTRY_AUTH: "$SCHEMAREGISTRY_AUTH"
+      CMD_ARGS: "--topic.createEnabled=false --topic.deleteEnabled=false --message.format=AVRO"
+    ports:
+      - ${HOST_PORT:-9000}:9000
