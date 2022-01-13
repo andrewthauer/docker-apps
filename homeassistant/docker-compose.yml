@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: home-assistant
+    # restart: unless-stopped
+    ports:
+      - 8123:8123
+    volumes:
+      - ./config:/config
+      - /etc/localtime:/etc/localtime:ro
