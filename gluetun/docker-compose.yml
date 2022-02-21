@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  # https://github.com/qdm12/gluetun
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    # line above must be uncommented to allow external containers to connect. See https://github.com/qdm12/gluetun/wiki/Connect-a-container-to-gluetun#external-container-to-gluetun
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8888:8888/tcp # HTTP proxy
+      - 8388:8388/tcp # Shadowsocks
+      - 8388:8388/udp # Shadowsocks
+    volumes:
+      - ./data:/gluetun
+    environment:
+      # See https://github.com/qdm12/gluetun/wiki
+      VPN_SERVICE_PROVIDER: ${VPN_SERVICE_PROVIDER}
+      VPN_TYPE: openvpn
+      # OpenVPN:
+      OPENVPN_USER: "${OPENVPN_USER}"
+      OPENVPN_PASSWORD: "${OPENVPN_PASSWORD}"
+      SERVER_REGIONS: "${REGION}"
+      TZ:
+
+  # To test IP:
+  #   docker run --rm --network=container:gluetun alpine:latest sh -c "apk add wget && wget -qO- https://ipinfo.io"
+  # test:
+  #   image: alpine:latest
+  #   network_mode: service:gluetun
+  #   command: sh -c "while true; do wget -qO- https://ipinfo.io; sleep 2; done;"

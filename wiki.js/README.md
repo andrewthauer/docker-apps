@@ -2,7 +2,7 @@
 
 [Wiki.js](https://wiki.js.org/) as a docker container.
 
-- https://www.vaultproject.io/
+- https://www.wiki.js.io/
 
 ## Running
 
