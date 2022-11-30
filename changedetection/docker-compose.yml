@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  changedetection:
+    image: ghcr.io/dgtlmoon/changedetection.io
+    container_name: changedetection
+    hostname: changedetection
+    # restart: unless-stopped
+    ports:
+      - 5000:5000
+    environment:
+      PLAYWRIGHT_DRIVER_URL: "ws://playwright-chrome:3000/"
+    # labels:
+    #   traefik.enable: true
+    #   traefik.http.routers.codeserver.rule: Host(`changedetection.$HOME_URL`)
+    #   traefik.http.services.codeserver.loadbalancer.server.port: 5000
+    volumes:
+      - ./data/changedetection:/config
+
+  playwright-chrome:
+    hostname: playwright-chrome
+    image: browserless/chrome
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:alpine
+    container_name: postgres
+    restart: ${DOCKER_RESTART:-unless-stopped}
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+    ports:
+      - '5432'
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data/pgdata
