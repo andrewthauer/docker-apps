@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  librespeed:
+    image: lscr.io/linuxserver/librespeed:latest
+    container_name: librespeed
+    # environment:
+      # PUID: $PUID
+      # PGID: $PGID
+      # TZ: $TZ
+      # PASSWORD: password
+      # CUSTOM_RESULTS: false #optional
+      # DB_TYPE: sqlite #optional
+      # DB_NAME: DB_NAME #optional
+      # DB_HOSTNAME: DB_HOSTNAME #optional
+      # DB_USERNAME: DB_USERNAME #optional
+      # DB_PASSWORD: DB_PASSWORD #optional
+      # DB_PORT: DB_PORT #optional
+    volumes:
+      - ./data:/config
+    ports:
+      - 9080:80
+    restart: unless-stopped
