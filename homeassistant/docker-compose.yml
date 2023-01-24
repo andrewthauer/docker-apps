@@ -4,7 +4,6 @@ services:
   homeassistant:
     image: ghcr.io/home-assistant/home-assistant:stable
     container_name: home-assistant
-    # restart: unless-stopped
     ports:
       - 8123:8123
     volumes:

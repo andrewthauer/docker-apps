@@ -4,7 +4,6 @@ services:
   oracle:
     image: wnameless/oracle-xe-11g-r2:latest
     container_name: oracle
-    restart: ${DOCKER_RESTART:-no}
     environment:
       ORACLE_ALLOW_REMOTE: 'false'
     ports:

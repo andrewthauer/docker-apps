@@ -12,7 +12,6 @@ services:
       POSTGRES_USER: wikijs
     logging:
       driver: "none"
-    restart: unless-stopped
     volumes:
       - db-data:/var/lib/postgresql/data
 
@@ -27,7 +26,6 @@ services:
       DB_USER: wikijs
       DB_PASS: wikijsrocks
       DB_NAME: wiki
-    restart: unless-stopped
     ports:
       - 8080:3000
     volumes:

@@ -14,7 +14,6 @@ services:
   # sonar-scanner:
   #   image: sonarsource/sonar-scanner-cli:latest
   #   container_name: sonar-scanner
-  #   # restart: unless-stopped
   #   # depends_on:
   #   #   - sonarqube
   #   volumes:

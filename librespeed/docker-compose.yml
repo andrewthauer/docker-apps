@@ -20,4 +20,3 @@ services:
       - ./data:/config
     ports:
       - 9080:80
-    restart: unless-stopped

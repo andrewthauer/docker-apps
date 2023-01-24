@@ -4,7 +4,6 @@ services:
   mysql:
     image: mysql
     container_name: mysql
-    restart: ${DOCKER_RESTART:-no}
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST:-mysql}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-}

@@ -9,7 +9,6 @@ services:
   redis:
     image: redis:latest
     container_name: redis
-    restart: ${DOCKER_RESTART:-unless-stopped}
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST:-redis}
     ports:

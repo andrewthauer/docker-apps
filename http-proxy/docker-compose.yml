@@ -10,12 +10,10 @@ services:
     ports:
       - 53535:53/tcp
       - 53535:53/udp
-    restart: always
 
   http-proxy:
     image: codekitchen/dinghy-http-proxy
     container_name: http-proxy
-    restart: always
     env_file:
       - .env
     environment:

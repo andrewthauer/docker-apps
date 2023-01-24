@@ -5,7 +5,6 @@ services:
     image: ghcr.io/dgtlmoon/changedetection.io
     container_name: changedetection
     hostname: changedetection
-    # restart: unless-stopped
     ports:
       - 5000:5000
     environment:
@@ -20,12 +19,10 @@ services:
   playwright-chrome:
     hostname: playwright-chrome
     image: browserless/chrome
-    restart: unless-stopped
 
   postgres:
     image: postgres:alpine
     container_name: postgres
-    restart: ${DOCKER_RESTART:-unless-stopped}
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
