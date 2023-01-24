@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./data/conf.d:/etc/nginx/conf.d
+      - ./data/templates:/etc/nginx/templates
+      - ./site:/usr/share/site
