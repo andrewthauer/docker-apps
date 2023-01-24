@@ -1,2 +1,5 @@
 .DS_Store
+tmp
+**/tmp
 **/data
+docker-compose.override.yml
