@@ -3,7 +3,6 @@ version: "3"
 services:
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
-    container_name: kafka-ui
     environment:
       KAFKA_CLUSTERS_0_NAME: $KAFKA_CLUSTERS_0_NAME
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: $KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS

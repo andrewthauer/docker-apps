@@ -3,7 +3,6 @@ version: '3'
 services:
   server:
     image: consul
-    container_name: consul
     environment:
       CONSUL_LOCAL_CONFIG: '{"leave_on_terminate": true}'
     ports:

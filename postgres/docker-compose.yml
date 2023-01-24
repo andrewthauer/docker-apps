@@ -8,7 +8,6 @@ volumes:
 services:
   postgres:
     image: postgres:latest
-    container_name: postgres
     command: -c ssl=on -c ssl_cert_file=/var/lib/postgresql/server.crt -c ssl_key_file=/var/lib/postgresql/server.key
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust

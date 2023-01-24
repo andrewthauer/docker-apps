@@ -3,7 +3,6 @@ version: '3'
 services:
   artifactory:
     image: docker.bintray.io/jfrog/artifactory-oss:latest
-    container_name: artifactory
     # environment:
     #   #  Add extra Java options by uncommenting the following lines
     #   - EXTRA_JAVA_OPTIONS=-Xmx4g

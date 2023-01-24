@@ -4,7 +4,6 @@ services:
   zookeeper:
     image: confluentinc/cp-zookeeper:6.0.0
     hostname: zookeeper
-    container_name: zookeeper
     ports:
       - "2181:2181"
     environment:
@@ -14,7 +13,6 @@ services:
   broker:
     image: confluentinc/cp-server:6.0.0
     hostname: broker
-    container_name: broker
     depends_on:
       - zookeeper
     ports:
@@ -43,7 +41,6 @@ services:
   schema-registry:
     image: confluentinc/cp-schema-registry:6.0.0
     hostname: schema-registry
-    container_name: schema-registry
     depends_on:
       - broker
     ports:
@@ -55,7 +52,6 @@ services:
   connect:
     image: cnfldemos/cp-server-connect-datagen:0.4.0-6.0.0
     hostname: connect
-    container_name: connect
     depends_on:
       - broker
       - schema-registry
@@ -88,7 +84,6 @@ services:
   control-center:
     image: confluentinc/cp-enterprise-control-center:6.0.0
     hostname: control-center
-    container_name: control-center
     depends_on:
       - broker
       - schema-registry
@@ -111,7 +106,6 @@ services:
   ksqldb-server:
     image: confluentinc/cp-ksqldb-server:6.0.0
     hostname: ksqldb-server
-    container_name: ksqldb-server
     depends_on:
       - broker
       - connect
@@ -133,7 +127,6 @@ services:
 
   ksqldb-cli:
     image: confluentinc/cp-ksqldb-cli:6.0.0
-    container_name: ksqldb-cli
     depends_on:
       - broker
       - connect
@@ -144,7 +137,6 @@ services:
   ksql-datagen:
     image: confluentinc/ksqldb-examples:6.0.0
     hostname: ksql-datagen
-    container_name: ksql-datagen
     depends_on:
       - ksqldb-server
       - broker
@@ -171,7 +163,6 @@ services:
     ports:
       - 8082:8082
     hostname: rest-proxy
-    container_name: rest-proxy
     environment:
       KAFKA_REST_HOST_NAME: rest-proxy
       KAFKA_REST_BOOTSTRAP_SERVERS: 'broker:29092'

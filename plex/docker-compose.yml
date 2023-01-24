@@ -3,7 +3,6 @@ version: '3'
 services:
   app:
     image: linuxserver/plex
-    container_name: plex
     environment:
       VERSION: ${VERSION:-latest}
       PGID: ${PGID}

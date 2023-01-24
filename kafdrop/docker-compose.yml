@@ -3,7 +3,6 @@ version: "3"
 services:
   kafdrop:
     image: obsidiandynamics/kafdrop:latest
-    container_name: kafdrop
     environment:
       KAFKA_BROKERCONNECT: "$KAFKA_BROKERCONNECT"
       KAFKA_PROPERTIES: "$KAFKA_PROPERTIES"

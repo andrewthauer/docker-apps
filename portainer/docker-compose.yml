@@ -6,7 +6,6 @@ volumes:
 services:
   app:
     image: portainer/portainer
-    container_name: portainer
     ports:
       - ${HOST_PORT:-9000}:9000
     volumes:

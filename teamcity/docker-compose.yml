@@ -3,7 +3,6 @@ version: '3'
 services:
   server:
     image: jetbrains/teamcity-server
-    container_name: teamcity-server
     ports:
       - ${HOST_PORT:-8111}:8111
     volumes:

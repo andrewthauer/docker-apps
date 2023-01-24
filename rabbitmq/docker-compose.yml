@@ -4,7 +4,6 @@ services:
   rabbitmq:
     # image: rabbitmq
     image: rabbitmq:management
-    container_name: rabbitmq
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST:-rabbitmq}
     hostname: rabbitmq

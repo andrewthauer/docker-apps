@@ -3,7 +3,6 @@ version: "3"
 services:
   sonarqube:
     image: sonarqube:latest
-    container_name: sonarqube
     ports:
       - ${HOST_PORT:-9000}:9000
     volumes:
@@ -13,7 +12,6 @@ services:
 
   # sonar-scanner:
   #   image: sonarsource/sonar-scanner-cli:latest
-  #   container_name: sonar-scanner
   #   # depends_on:
   #   #   - sonarqube
   #   volumes:

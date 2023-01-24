@@ -3,7 +3,6 @@ version: '3'
 services:
   server:
     image: cptactionhank/atlassian-bamboo:latest
-    container_name: bamboo
     ports:
       - ${HOST_PORT:-8085}:8085
     volumes:

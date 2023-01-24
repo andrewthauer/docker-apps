@@ -3,7 +3,6 @@ version: "3"
 services:
   changedetection:
     image: ghcr.io/dgtlmoon/changedetection.io
-    container_name: changedetection
     hostname: changedetection
     ports:
       - 5000:5000
@@ -22,7 +21,6 @@ services:
 
   postgres:
     image: postgres:alpine
-    container_name: postgres
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD

@@ -3,7 +3,6 @@ version: '3'
 services:
   server:
     image: vault
-    container_name: vault
     environment:
       VAULT_LOCAL_CONFIG: '{"backend": {"file": {"path": "/vault/file"}}, "default_lease_ttl": "168h", "max_lease_ttl": "720h"}'
     command: server

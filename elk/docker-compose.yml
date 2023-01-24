@@ -3,7 +3,6 @@ version: '3.2'
 services:
   elasticsearch:
     image: elasticsearch:7.9.0
-    container_name: elasticsearch
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
       ELASTIC_PASSWORD: changeme
@@ -23,7 +22,6 @@ services:
 
   logstash:
     image: logstash:7.9.0
-    container_name: logstash
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
@@ -40,7 +38,6 @@ services:
 
   kibana:
     image: kibana:7.9.0
-    container_name: kibana
     networks:
       - elk
     ports:

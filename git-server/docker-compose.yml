@@ -3,7 +3,6 @@ version: '3'
 services:
   server:
     image: jkarlos/git-server-docker
-    container_name: git-server
     ports:
       - ${HOST_PORT:-2222}:22
     volumes:
