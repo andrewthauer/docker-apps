@@ -1,10 +1,33 @@
-version: '3'
+version: "3"
+
+volumes:
+  nextcloud:
+  db:
 
 services:
+  db:
+    image: mariadb:latest
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    environment:
+      - MYSQL_ROOT_PASSWORD=abc
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    volumes:
+      # - ${DB_DATA_PATH:-./data/mariadb}:/var/lib/mysql
+      - db:/var/lib/mysql
+
   # db:
   #   image: mariadb:latest
+  #   restart: always
+  #   command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
   #   volumes:
-  #     - ${DB_DATA_PATH:-./data/mariadb}:/var/lib/mysql
+  #     - ${DB_DATA_PATH:-./data/mysql}:/var/lib/mysql
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=
+  #     - MYSQL_PASSWORD=
+  #     - MYSQL_DATABASE=nextcloud
+  #     - MYSQL_USER=nextcloud
 
   nextcloud:
     image: nextcloud:latest
@@ -21,10 +44,18 @@ services:
     #   NEXTCLOUD_ADMIN_PASSWORD: 1234
     #   NEXTCLOUD_DATA_DIR: /var/www/html/data
     #   NEXTCLOUD_TABLE_PREFIX: ''
+    environment:
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=db
     ports:
       - ${HOST_PORT:-8080}:80
+    links:
+      - db
     volumes:
-      - ${DATA_PATH:-./data/nextcloud}:/var/www/html
+      # - ${DATA_PATH:-./data/nextcloud}:/var/www/html
+      - nextcloud:/var/www/html
       # - /var/www/html Main folder, needed for updating
       # - /var/www/html/custom_apps installed / modified apps
       # - /var/www/html/config local configuration
