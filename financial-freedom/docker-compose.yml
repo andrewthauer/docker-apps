@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  php:
+    image: serversideup/financial-freedom:latest
+    ports:
+      - 8080:80
+      - 8443:443
+    volumes:
+      - logs:/var/www/html/storage/logs
+      - sessions:/var/www/html/storage/framework/sessions
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:10.11
+    volumes:
+      - database:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+
+volumes:
+  logs:
+  sessions:
+  database:
